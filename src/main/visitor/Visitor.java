@@ -1,4 +1,4 @@
-package visitor;
+package main.visitor;
 
 import main.users_and_groups.Group;
 import main.users_and_groups.Party;

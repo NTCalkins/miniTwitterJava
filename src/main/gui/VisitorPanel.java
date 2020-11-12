@@ -10,10 +10,10 @@ import javax.swing.JPanel;
 
 import main.users_and_groups.Group;
 import main.users_and_groups.Party;
-import visitor.GroupCountVisitor;
-import visitor.MessageCountVisitor;
-import visitor.PositiveCountVisitor;
-import visitor.UserCountVisitor;
+import main.visitor.GroupCountVisitor;
+import main.visitor.MessageCountVisitor;
+import main.visitor.PositiveCountVisitor;
+import main.visitor.UserCountVisitor;
 
 public class VisitorPanel extends JPanel {
 

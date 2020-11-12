@@ -3,7 +3,7 @@ package main.users_and_groups;
 import java.util.HashSet;
 import java.util.Set;
 
-import visitor.Visitor;
+import main.visitor.Visitor;
 
 /**
  * Composite class for holding users and groups in order to demonstrate the

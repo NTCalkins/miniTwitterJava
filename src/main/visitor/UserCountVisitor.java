@@ -1,16 +1,16 @@
-package visitor;
+package main.visitor;
 
 import main.users_and_groups.Group;
 import main.users_and_groups.Party;
 import main.users_and_groups.User;
 
 /**
- * Visitor that counts the amount of groups, showing the visitor design pattern
+ * Implementation of Visitor pattern to count users
  * 
  * @author Nicholas Calkins
  *
  */
-public class GroupCountVisitor implements Visitor {
+public class UserCountVisitor implements Visitor {
 
 	@Override
 	public int visit(Party p) {
@@ -28,12 +28,12 @@ public class GroupCountVisitor implements Visitor {
 
 	@Override
 	public int visit(User u) {
-		return 0;
+		return 1;
 	}
 
 	@Override
 	public int visit(Group g) {
-		return 1;
+		return 0;
 	}
 
 }

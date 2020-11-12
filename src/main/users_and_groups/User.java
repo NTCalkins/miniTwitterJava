@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import visitor.Visitor;
+import main.visitor.Visitor;
 
 /**
  * User that shows Visitor, Composite, and Observer design patterns

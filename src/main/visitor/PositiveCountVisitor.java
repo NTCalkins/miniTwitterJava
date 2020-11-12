@@ -1,16 +1,16 @@
-package visitor;
+package main.visitor;
 
 import main.users_and_groups.Group;
 import main.users_and_groups.Party;
 import main.users_and_groups.User;
 
 /**
- * Implementation of Visitor pattern to count users
+ * 
  * 
  * @author Nicholas Calkins
  *
  */
-public class UserCountVisitor implements Visitor {
+public class PositiveCountVisitor implements Visitor {
 
 	@Override
 	public int visit(Party p) {
@@ -28,7 +28,7 @@ public class UserCountVisitor implements Visitor {
 
 	@Override
 	public int visit(User u) {
-		return 1;
+		return u.getNumPositiveMessages();
 	}
 
 	@Override
