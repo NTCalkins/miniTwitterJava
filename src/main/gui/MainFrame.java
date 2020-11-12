@@ -10,16 +10,16 @@ import javax.swing.JPanel;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 /**
- * MainPanel that collates the other panels. Implements the Singleton Design
+ * MainFrame that collates the other panels. Implements the Singleton Design
  * Pattern
  * 
  * @author Nicholas Calkins
  *
  */
-public class MainPanel extends JFrame {
+public class MainFrame extends JFrame {
 	
 	//Static MainPanel for the Singleton design pattern
-	private static MainPanel INSTANCE;
+	private static MainFrame INSTANCE;
 	
 	//Root for the tree
 	private Group rootNode;
@@ -35,17 +35,18 @@ public class MainPanel extends JFrame {
 	private JPanel right;
 	
 	
-	private MainPanel() {
+	private MainFrame() {
 		
 		super();
 		
-		
+		//Instantiate the parts of the mainframe
 		this.rootNode = new Group("Root");
 		this.t = new TreePanel(rootNode);
 		this.a = new AddPanel(t);
 		this.o = new OpenUserPanel(t);
 		this.v = new VisitorPanel(t);
 		
+		//Organize everything in the righthand panel
 		this.setLayout(new BorderLayout());
 		this.right = new JPanel();
 		this.right.setLayout(new GridLayout(3,1));
@@ -53,6 +54,7 @@ public class MainPanel extends JFrame {
 		this.right.add(o);
 		this.right.add(v);
 		
+		//Put the tree and rightpanel into the tree
 		this.add(t,BorderLayout.CENTER);
 		this.add(right,BorderLayout.EAST);
 		this.setVisible(true);
@@ -63,11 +65,11 @@ public class MainPanel extends JFrame {
 	/**
 	 * Methods to get the only instance of the MainPanel
 	 * 
-	 * @return
+	 * @return the instance of MainPanel
 	 */
-	public static MainPanel getInstance() {
+	public static MainFrame getInstance() {
 		if (INSTANCE == null) {
-			INSTANCE = new MainPanel();
+			INSTANCE = new MainFrame();
 		}
 		return INSTANCE;
 	}

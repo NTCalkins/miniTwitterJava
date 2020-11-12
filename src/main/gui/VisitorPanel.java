@@ -9,11 +9,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import main.users_and_groups.Group;
-import main.users_and_groups.GroupCountVisitor;
-import main.users_and_groups.MessageCountVisitor;
 import main.users_and_groups.Party;
-import main.users_and_groups.PositiveCountVisitor;
-import main.users_and_groups.UserCountVisitor;
+import visitor.GroupCountVisitor;
+import visitor.MessageCountVisitor;
+import visitor.PositiveCountVisitor;
+import visitor.UserCountVisitor;
 
 public class VisitorPanel extends JPanel {
 

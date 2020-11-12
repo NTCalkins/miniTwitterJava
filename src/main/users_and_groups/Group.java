@@ -3,9 +3,11 @@ package main.users_and_groups;
 import java.util.HashSet;
 import java.util.Set;
 
+import visitor.Visitor;
+
 /**
  * Composite class for holding users and groups in order to demonstrate the
- * composite software design pattern
+ * composite software design pattern as well as Observer design pattern
  * 
  * @author Nicholas Calkins
  *
@@ -48,7 +50,12 @@ public class Group extends Party {
 
 	@Override
 	public int acceptVisitor(Visitor v) {
-		return v.visitGroup(this);
+		int count = 0;
+		for (Party p : entries) {
+			count += p.acceptVisitor(v);
+		}
+		count += v.visit(this);
+		return count;
 	}
 	
 

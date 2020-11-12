@@ -9,6 +9,6 @@ package main.gui;
 public class Driver {
 	
 	public static void main (String[] args) {
-		MainPanel mp = MainPanel.getInstance();
+		MainFrame mp = MainFrame.getInstance();
 	}
 }

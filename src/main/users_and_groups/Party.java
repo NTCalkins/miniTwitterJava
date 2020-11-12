@@ -2,6 +2,8 @@ package main.users_and_groups;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
+import visitor.Visitor;
+
 /**
  * abstract class to demonstrate the Composite design pattern
  * 

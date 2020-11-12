@@ -5,6 +5,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import visitor.Visitor;
+
+/**
+ * User that shows Visitor, Composite, and Observer design patterns
+ * 
+ * @author Nicholas Calkins
+ *
+ */
 public class User extends Party implements Observer, Subject {
 
 	
@@ -137,7 +145,7 @@ public class User extends Party implements Observer, Subject {
 
 	@Override
 	public int acceptVisitor(Visitor v) {
-		return v.visitUser(this);
+		return v.visit(this);
 		
 	}
 	
