@@ -47,6 +47,76 @@ public class Group extends Party {
 		}
 		return false;
 	}
+	
+	/**
+	 * Get the number of messages in this group
+	 */
+	@Override
+	public int getNumMessages() {
+		int count = 0;
+		for (Party p : entries) {
+			count += p.getNumMessages();
+		}
+		return count;
+	}
+	
+	/**
+	 * Get the number of positive messages in this group
+	 */
+	@Override
+	public int getNumPositiveMessages() {
+		int count = 0;
+		for (Party p : entries) {
+			count += p.getNumPositiveMessages();
+		}
+		return count;
+	}
+	
+	
+	/**
+	 * checks if this group contains some id
+	 * @param uid, the desired id to check for in the composite
+	 * @return true or false depending on if this ID is in the tree
+	 */
+	public boolean containsID(String uid) {
+		boolean contains = false;
+		if (this.getID().equals(uid)) {
+			return true;
+		}
+		for (Party p : entries) {
+			if (p.getClass() == Group.class) {
+				contains = ((Group) p).containsID(uid);
+				if (contains) {
+					return true;
+				}
+			}
+			else if (p.getClass() == User.class) {
+				contains = ((User) p).getID().equals(uid);
+				if (contains) {
+					return true;
+				}
+			}
+		}
+		return false;
+		
+	}
+	
+	public User getUser(String uid) {
+		User u = null;
+		for (Party p : entries) {
+			if (p.getClass() == User.class) {
+				//Found the user
+				if (p.getID().equals(uid)) {
+					u = (User) p;
+					return u;
+				}
+			}
+			else if (p.getClass() == Group.class) {
+				u = ((Group) p).getUser(uid);
+			}
+		}
+		return u;
+	}
 
 	@Override
 	public int acceptVisitor(Visitor v) {
@@ -57,6 +127,5 @@ public class Group extends Party {
 		count += v.visit(this);
 		return count;
 	}
-	
 
 }

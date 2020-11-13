@@ -15,6 +15,13 @@ import main.visitor.MessageCountVisitor;
 import main.visitor.PositiveCountVisitor;
 import main.visitor.UserCountVisitor;
 
+/**
+ * Panel for housing the visitor buttons that will determine
+ * number of groups, users, etc.
+ * 
+ * @author Nicholas Calkins
+ *
+ */
 public class VisitorPanel extends JPanel {
 
 	private JLabel identityLabel;

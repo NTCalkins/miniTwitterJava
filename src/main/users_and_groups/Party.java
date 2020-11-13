@@ -31,5 +31,9 @@ public abstract class Party extends DefaultMutableTreeNode {
 		return id;
 	}
 	
+	public abstract int getNumMessages();
+	
+	public abstract int getNumPositiveMessages();
+	
 	public abstract int acceptVisitor(Visitor v);
 }

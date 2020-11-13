@@ -15,11 +15,15 @@ import main.users_and_groups.Group;
 import main.users_and_groups.User;
 import main.users_and_groups.Party;
 
+
+/**
+ * JPanel for housing the tree of users and groups
+ * 
+ * @author Nicholas Calkins
+ *
+ */
 public class TreePanel extends JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private JTree tree;
@@ -85,43 +89,11 @@ public class TreePanel extends JPanel {
 	}
 	
 	public boolean containsID(String id) {
-		
-		//If the id is the root, return true
-		if (id == ((Party) this.rootNode).getID()) {
-			return true;
-		}
-		
-		//Otherwise, go through each child and compare
-		Enumeration<TreeNode> children = this.rootNode.children();
-		if (children != null) {
-			while (children.hasMoreElements()) {
-				String nodeId = ((Party) children.nextElement()).getID();
-				if (id.equals(nodeId)) {
-					return true;
-				}
-			}
-		}
-		return false;
+		return ((Group) rootNode).containsID(id);
 	}
 	
 	public User getUser(String id) {
-		
-		//Walk through the tree and keep going until the User is found or children are exhausted
-		Enumeration<TreeNode> children = this.rootNode.children();
-		if (children != null) {
-			while (children.hasMoreElements()) {
-				Party p = ((Party) children.nextElement());
-				if (id.equals(p.getID())) {
-					if (p.getClass() == User.class) {
-						return (User) p;
-					}
-					else {
-						return null;
-					}
-				}
-			}
-		}
-		return null;
+		return ((Group) rootNode).getUser(id);
 	}
 	
 	public JTree getTree() {

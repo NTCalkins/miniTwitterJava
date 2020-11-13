@@ -5,7 +5,7 @@ import main.users_and_groups.Party;
 import main.users_and_groups.User;
 
 /**
- * 
+ * Implementation of visitor pattern to count positive messages
  * 
  * @author Nicholas Calkins
  *

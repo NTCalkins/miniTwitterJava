@@ -20,6 +20,12 @@ import javax.swing.SwingConstants;
 
 import main.users_and_groups.User;
 
+/**
+ * Frame for holding the user information
+ * 
+ * @author Nicholas Calkins
+ *
+ */
 public class UserFrame extends JFrame {
 	
 	private TreePanel t;
@@ -135,7 +141,6 @@ public class UserFrame extends JFrame {
 				}
 				else {
 					uToFollow = t.getUser(uId);
-					System.out.println(u + " now following " + uToFollow);
 					//Check if the found Party is actually a user
 					if (uToFollow.getClass() != User.class) {
 						followButton.setText("Follow User (Error: Not a user!)");

@@ -4,10 +4,8 @@ import main.users_and_groups.Group;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
-import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.tree.DefaultMutableTreeNode;
 
 /**
  * MainFrame that collates the other panels. Implements the Singleton Design
@@ -18,6 +16,8 @@ import javax.swing.tree.DefaultMutableTreeNode;
  */
 public class MainFrame extends JFrame {
 	
+	private static final long serialVersionUID = 1L;
+
 	//Static MainPanel for the Singleton design pattern
 	private static MainFrame INSTANCE;
 	
@@ -30,8 +30,7 @@ public class MainFrame extends JFrame {
 	private OpenUserPanel o;
 	private VisitorPanel v;
 	
-	//Panels for further structuring
-	private JPanel center;
+	//Panel for further structuring
 	private JPanel right;
 	
 	

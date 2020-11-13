@@ -5,10 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.tree.DefaultMutableTreeNode;
 
 
 import main.users_and_groups.Group;
@@ -22,7 +20,9 @@ import main.users_and_groups.User;
  *
  */
 public class AddPanel extends JPanel {
-	
+
+	private static final long serialVersionUID = 1L;
+
 	//Swing components for the panel
 	private JButton addUser;
 	private JButton addGroup;

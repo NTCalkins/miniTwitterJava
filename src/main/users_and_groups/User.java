@@ -124,6 +124,7 @@ public class User extends Party implements Observer, Subject {
 		this.feed.add( ( (User) subject ).getLatestTweet() );
 	}
 
+	@Override
 	public int getNumMessages() {
 		return messages.size();
 	}
@@ -131,6 +132,7 @@ public class User extends Party implements Observer, Subject {
 	/**
 	 * Returns the number of positive messages
 	 */
+	@Override
 	public int getNumPositiveMessages() {
 		int positive = 0;
 		for (String m : messages) {
@@ -146,7 +148,6 @@ public class User extends Party implements Observer, Subject {
 	@Override
 	public int acceptVisitor(Visitor v) {
 		return v.visit(this);
-		
 	}
 	
 	

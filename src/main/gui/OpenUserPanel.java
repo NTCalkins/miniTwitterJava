@@ -13,7 +13,12 @@ import javax.swing.JPanel;
 import main.users_and_groups.Party;
 import main.users_and_groups.User;
 
-
+/**
+ * Panel for letting the user open a user view
+ * 
+ * @author Nicholas Calkins
+ *
+ */
 public class OpenUserPanel extends JPanel {
 	
 	//Sets for keeping track of the current users and panels
