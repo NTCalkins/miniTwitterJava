@@ -45,7 +45,7 @@ public class UserFrame extends JFrame {
 	private JPanel followPanel;
 	
 	private JLabel followingLabel;
-	private DefaultListModel followingListModel;
+	private DefaultListModel<String> followingListModel;
 	private JList followingList;
 	
 	private JTextField tweetText;
@@ -97,14 +97,20 @@ public class UserFrame extends JFrame {
 		followingList = new JList(followingListModel);
 		
 		//Set up the follower list
-		followingListModel.addAll(u.getFollowingIds());
+		for (String followerId : u.getFollowingIds())
+		{
+			followingListModel.addElement(followerId);
+		}
 		
 		//Set up the user's feed
 		feedLabel = new JLabel("News Feed", SwingConstants.CENTER);
 		feedListModel = new DefaultListModel();
 		feedList = new JList(feedListModel);
 		
-		feedListModel.addAll(u.getFeed());
+		for (String feedMessage : u.getFeed())
+		{
+			feedListModel.addElement(feedMessage));
+		}
 		
 		//Add everything to the main panel
 		mainPanel.add(nameLabel);
@@ -187,7 +193,10 @@ public class UserFrame extends JFrame {
 	 */
 	private void updateFeedList() {
 		feedListModel.removeAllElements();
-		feedListModel.addAll(this.u.getFeed());
+		for (String feedMessage : u.getFeed())
+		{
+			feedListModel.addElement(feedMessage);
+		}
 		feedList.updateUI();
 	}
 	
@@ -196,7 +205,10 @@ public class UserFrame extends JFrame {
 	 */
 	private void updateFollowingList() {
 		followingListModel.removeAllElements();
-		followingListModel.addAll(this.u.getFollowingIds());
+		for (String followerId : u.getFollowingIds())
+		{
+			followingListModel.addElement(followerId);
+		}
 		followingList.updateUI();
 	}
 }
