@@ -109,7 +109,7 @@ public class UserFrame extends JFrame {
 		
 		for (String feedMessage : u.getFeed())
 		{
-			feedListModel.addElement(feedMessage));
+			feedListModel.addElement(feedMessage);
 		}
 		
 		//Add everything to the main panel
