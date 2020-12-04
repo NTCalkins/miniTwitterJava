@@ -18,8 +18,12 @@ public abstract class Party extends DefaultMutableTreeNode {
 	private static final long serialVersionUID = 1L;
 	private String id;
 	
+	//Time attribute that can be used by both users and groups
+	private long creationTime = 0;
+	
 	public Party(String id) {
 		this.id = id;
+		this.creationTime = System.currentTimeMillis();
 	}
 	
 	public String getID() {
@@ -29,6 +33,16 @@ public abstract class Party extends DefaultMutableTreeNode {
 	@Override
 	public String toString() {
 		return id;
+	}
+	
+	public long getCreationTime()
+	{
+		return this.creationTime;
+	}
+	
+	public void setCreationTime()
+	{
+		this.creationTime = System.currentTimeMillis();
 	}
 	
 	public abstract int getNumMessages();

@@ -14,6 +14,8 @@ import main.visitor.GroupCountVisitor;
 import main.visitor.MessageCountVisitor;
 import main.visitor.PositiveCountVisitor;
 import main.visitor.UserCountVisitor;
+import main.visitor.LatestUserVisitor;
+import main.visitor.ValidEntityVisitor;
 
 /**
  * Panel for housing the visitor buttons that will determine
@@ -32,12 +34,16 @@ public class VisitorPanel extends JPanel {
 	private JButton userNumButton;
 	private JButton numMessagesButton;
 	private JButton numPosMessagesButton;
+	private JButton validEntityButton;
+	private JButton lastUpdatedButton;
 	
 	//Visitors for the various metrics
 	private UserCountVisitor userCounter;
 	private GroupCountVisitor groupCounter;
 	private PositiveCountVisitor posCounter;
 	private MessageCountVisitor msgCounter;
+	private LatestUserVisitor lastUpdatedVisitor;
+	private ValidEntityVisitor validEntityVisitor;
 	
 	//Tree panel, mainly to get the root of the tree
 	private TreePanel t;
@@ -47,7 +53,7 @@ public class VisitorPanel extends JPanel {
 	public VisitorPanel(TreePanel treePanel) {
 		super();
 		
-		this.setLayout(new GridLayout(3,2));
+		this.setLayout(new GridLayout(4,3));
 		this.t = treePanel;
 		
 		//Get a reference to the root of the tree
@@ -61,12 +67,17 @@ public class VisitorPanel extends JPanel {
 		userNumButton = new JButton("Number of Users");
 		numMessagesButton = new JButton("Number of Messages");
 		numPosMessagesButton = new JButton("Percent Messages Positive");
+		validEntityButton = new JButton("Check if Users and Groups are Valid");
+		lastUpdatedButton = new JButton("Get Last Updated User");
 		
 		//Instantiate visitors
 		userCounter = new UserCountVisitor();
 		groupCounter = new GroupCountVisitor();
 		posCounter = new PositiveCountVisitor();
 		msgCounter = new MessageCountVisitor();
+		lastUpdatedVisitor = new LatestUserVisitor();
+		validEntityVisitor = new ValidEntityVisitor();
+		
 		
 		
 		//Add everything to the GridLayout VisitorPanel
@@ -77,6 +88,37 @@ public class VisitorPanel extends JPanel {
 		this.add(userNumButton);
 		this.add(numMessagesButton);
 		this.add(numPosMessagesButton);
+		this.add(validEntityButton);
+		this.add(lastUpdatedButton);
+		
+		lastUpdatedButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				root.acceptVisitor(lastUpdatedVisitor);
+				identityLabel.setText("Last updated user: " + lastUpdatedVisitor.getLatestUser());
+				numberLabel.setText("");
+			}
+			
+		});
+		
+		validEntityButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int valid = root.acceptVisitor(validEntityVisitor);
+				if (valid == 1)
+				{
+					identityLabel.setText("All users and groups are valid!");
+				}
+				else
+				{
+					identityLabel.setText("All users and groups are NOT valid!");
+				}
+				numberLabel.setText("");
+			}
+			
+		});
 		
 		groupNumButton.addActionListener(new ActionListener() {
 

@@ -36,9 +36,14 @@ public class User extends Party implements Observer, Subject {
 	//Those that are being followed and following
 	private Set<Observer> followers;
 	private Set<Subject> following;
+	
+	//variable for storing the time that the user was last updated
+	long lastUpdatedTime = 0;
 		
 	public User(String id) {
 		super(id);
+		
+		this.lastUpdatedTime = this.getCreationTime();
 		
 		//Instantiate the various fields of this User
 		this.feed = new ArrayList<String>();
@@ -49,6 +54,16 @@ public class User extends Party implements Observer, Subject {
 		this.messages = new ArrayList<String>();
 		
 		following.add(this);
+	}
+	
+	public void updateLastUpdatedTime()
+	{
+		this.lastUpdatedTime = System.currentTimeMillis();
+	}
+	
+	public long getLastUpdatedTime()
+	{
+		return this.lastUpdatedTime;
 	}
 	
 	public Set<String> getFollowerIds() {
@@ -94,6 +109,7 @@ public class User extends Party implements Observer, Subject {
 		for (Observer o : followers) {
 			o.update(this);
 		}
+		this.updateLastUpdatedTime();
 		
 	}
 	
@@ -122,6 +138,7 @@ public class User extends Party implements Observer, Subject {
 	@Override
 	public void update(Subject subject) {
 		this.feed.add( ( (User) subject ).getLatestTweet() );
+		this.updateLastUpdatedTime();
 	}
 
 	@Override

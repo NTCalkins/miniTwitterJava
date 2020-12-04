@@ -40,6 +40,8 @@ public class UserFrame extends JFrame {
 	
 	private JLabel nameLabel;
 	
+	private JLabel lastUpdatedLabel;
+	
 	private JTextField followText;
 	private JButton followButton;
 	private JPanel followPanel;
@@ -68,10 +70,12 @@ public class UserFrame extends JFrame {
 		
 		nameLabel = new JLabel(u.getID(), SwingConstants.CENTER);
 		
+		lastUpdatedLabel = new JLabel("Time last updated: " + String.valueOf(u.getLastUpdatedTime()), SwingConstants.CENTER);
+				
 		this.currentPanels = cp;
 		this.mainPanel = new JPanel();
 		
-		mainPanel.setLayout(new GridLayout(7,1));
+		mainPanel.setLayout(new GridLayout(8,1));
 		
 		
 		//Components for following a user
@@ -114,6 +118,7 @@ public class UserFrame extends JFrame {
 		
 		//Add everything to the main panel
 		mainPanel.add(nameLabel);
+		mainPanel.add(lastUpdatedLabel);
 		mainPanel.add(followPanel);
 		mainPanel.add(followingLabel);
 		mainPanel.add(followingList);
@@ -198,6 +203,8 @@ public class UserFrame extends JFrame {
 			feedListModel.addElement(feedMessage);
 		}
 		feedList.updateUI();
+		lastUpdatedLabel.setText("Time last updated: " + String.valueOf(u.getLastUpdatedTime()));
+		lastUpdatedLabel.updateUI();
 	}
 	
 	/**
